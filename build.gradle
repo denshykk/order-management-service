@@ -1,0 +1,51 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.griddynamics.reactive.course'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // webflux, reactor-netty
+    implementation "org.springframework.boot:spring-boot-starter-webflux"
+    implementation "io.projectreactor.netty:reactor-netty"
+
+    // mongodb dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive:2.6.7'
+    implementation "org.mongodb:mongodb-driver-reactivestreams"
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // jackson dependencies
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
+
+    // junit
+    implementation 'junit:junit:4.13.2'
+
+    // wiremock
+    implementation 'org.springframework.cloud:spring-cloud-contract-wiremock:3.1.2'
+
+    // testing
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.22"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation 'io.projectreactor:reactor-test:3.4.18'
+    testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:3.4.5'
+}
+
+test {
+    useJUnitPlatform()
+}
